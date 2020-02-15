@@ -20,6 +20,32 @@ int max_tuple(int size, int ar[], int diff) {
     return -1;
 }
 
+int min_tuple(int size, int ar[], int max_tuple, int diff) {
+    int total = 0;
+    for (int i = 1; i < max_tuple; ++i) {
+        
+        total += ar[size - i];
+        
+        if (total > diff) {
+            return i;
+        }
+    }
+    return max_tuple; //if you are here fuck me
+} 
+
+/* 
+int what_to_remove(int size, int diff, int ar[], int max_tuple, int min_tuple)
+{
+    for () 
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (ar[i] == diff) {return i;}
+            
+        }
+    }
+} */
+
 
 int main()
 {
@@ -36,8 +62,10 @@ int main()
     }
 
     int diff = sum(num_of_types, slices_per_type) - max_wanted_slices;
-
-    cout << max_tuple(num_of_types, slices_per_type, diff) << endl;
+    int max_tuple_var = max_tuple(num_of_types, slices_per_type, diff);
+    int min_tuple_var = min_tuple(num_of_types, slices_per_type, max_tuple_var, diff);
+    cout << min_tuple_var << "    " << max_tuple_var << endl;
+    //cout << max_tuple(num_of_types, slices_per_type, diff) << endl;
 
 
   return 0;
