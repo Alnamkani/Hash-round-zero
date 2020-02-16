@@ -21,12 +21,14 @@ int max_tuple(int size, int ar[], int diff) {
 }
 
 int min_tuple(int size, int ar[], int max_tuple, int diff) {
+    
     int total = 0;
+    
     for (int i = 1; i < max_tuple; ++i) {
         
         total += ar[size - i];
         
-        if (total > diff) {
+        if (total >= diff) {
             return i;
         }
     }
@@ -67,6 +69,7 @@ int main()
     cout << min_tuple_var << "    " << max_tuple_var << endl;
     //cout << max_tuple(num_of_types, slices_per_type, diff) << endl;
 
+    delete [] slices_per_type;
 
   return 0;
 }
